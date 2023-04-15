@@ -1,10 +1,9 @@
-﻿#include <limits.h>
+#include <limits.h>
 #include <string.h>
 
 #include "skybox_technique.h"
 #include "util.h"
 
-/*Ýòî âåðøèííûé øåéäåð äëÿ ñêàéáîêñà.*/
 static const char* pVS = "                                                          \n\
 #version 330                                                                        \n\
                                                                                     \n\
@@ -41,9 +40,9 @@ SkyboxTechnique::SkyboxTechnique()
 {
 }
 
-//SkyboxTechnique::~SkyboxTechnique()
-//{
-//}
+SkyboxTechnique::~SkyboxTechnique()
+{
+}
 
 bool SkyboxTechnique::Init()
 {
@@ -66,8 +65,8 @@ bool SkyboxTechnique::Init()
     m_WVPLocation = GetUniformLocation("gWVP");
     m_textureLocation = GetUniformLocation("gCubemapTexture");
 
-    if (m_WVPLocation == INVALID_UNIFORM_LOCATION ||
-        m_textureLocation == INVALID_UNIFORM_LOCATION) {
+    if (m_WVPLocation == 0xFFFFFFFF ||
+        m_textureLocation == 0xFFFFFFFF) {
         return false;
     }
 

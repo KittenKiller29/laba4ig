@@ -1,22 +1,23 @@
 #include <assert.h>
 
 #include "mesh.h"
+#define SAFE_DELETE(a) if( (a) != NULL ) delete (a); (a) = NULL;
 
 Mesh::MeshEntry::MeshEntry()
 {
-    VB = INVALID_OGL_VALUE;
-    IB = INVALID_OGL_VALUE;
+    VB = 0xFFFFFFFF;
+    IB = 0xFFFFFFFF;
     NumIndices = 0;
     MaterialIndex = INVALID_MATERIAL;
 }
 
 Mesh::MeshEntry::~MeshEntry()
 {
-    if (VB != INVALID_OGL_VALUE) {
+    if (VB != 0xFFFFFFFF) {
         glDeleteBuffers(1, &VB);
     }
 
-    if (IB != INVALID_OGL_VALUE) {
+    if (IB != 0xFFFFFFFF) {
         glDeleteBuffers(1, &IB);
     }
 }

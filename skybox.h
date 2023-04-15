@@ -1,4 +1,3 @@
-#pragma once
 #ifndef SKYBOX_H
 #define	SKYBOX_H
 
@@ -6,7 +5,6 @@
 #include "skybox_technique.h"
 #include "cubemap_texture.h"
 #include "mesh.h"
-
 
 class SkyBox
 {

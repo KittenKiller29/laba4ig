@@ -1,10 +1,8 @@
-#pragma once
 #ifndef SKYBOX_TECHNIQUE_H
 #define	SKYBOX_TECHNIQUE_H
 
 #include "technique.h"
 #include "math_3d.h"
-
 
 
 class SkyboxTechnique : public Technique {
@@ -17,7 +15,7 @@ public:
     void SetWVP(const Matrix4f& WVP);
     void SetTextureUnit(unsigned int TextureUnit);
 
-    /*virtual ~SkyboxTechnique();*/
+    virtual ~SkyboxTechnique();
 
 private:
 

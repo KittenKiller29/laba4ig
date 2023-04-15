@@ -9,7 +9,6 @@ public:
     virtual void PassiveMouseCB(int x, int y) = 0;
     virtual void RenderSceneCB() = 0;
     virtual void IdleCB() = 0;
-    virtual ~ICallbacks() {};
 };
 
 #endif /* CALLBACKS_H */

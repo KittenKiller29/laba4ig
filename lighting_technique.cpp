@@ -4,10 +4,6 @@
 #include "lighting_technique.h"
 #include "util.h"
 
-/*Это обновленный шейдер класса LightingTechnique. 
-  Мы добавили матрицу WVP как uniform-переменную и 4-вектор в качестве выходного параметра,
-  который содержит координаты в пространстве клипа, вычисленные через преобразование позиции матрицей WVP источника света.*/
-
 static const char* pVS = "                                                          \n\
 #version 330                                                                        \n\
                                                                                     \n\
@@ -222,18 +218,18 @@ bool LightingTechnique::Init()
     m_shadowMapLocation = GetUniformLocation("gShadowMap");
 
 
-    if (m_dirLightLocation.AmbientIntensity == INVALID_UNIFORM_LOCATION ||
-        m_WVPLocation == INVALID_UNIFORM_LOCATION ||
-        m_WorldMatrixLocation == INVALID_UNIFORM_LOCATION ||
-        m_samplerLocation == INVALID_UNIFORM_LOCATION ||
-        m_eyeWorldPosLocation == INVALID_UNIFORM_LOCATION ||
-        m_dirLightLocation.Color == INVALID_UNIFORM_LOCATION ||
-        m_dirLightLocation.DiffuseIntensity == INVALID_UNIFORM_LOCATION ||
-        m_dirLightLocation.Direction == INVALID_UNIFORM_LOCATION ||
-        m_matSpecularIntensityLocation == INVALID_UNIFORM_LOCATION ||
-        m_matSpecularPowerLocation == INVALID_UNIFORM_LOCATION ||
-        m_numPointLightsLocation == INVALID_UNIFORM_LOCATION ||
-        m_numSpotLightsLocation == INVALID_UNIFORM_LOCATION) {
+    if (m_dirLightLocation.AmbientIntensity == 0xFFFFFFFF ||
+        m_WVPLocation == 0xFFFFFFFF ||
+        m_WorldMatrixLocation == 0xFFFFFFFF ||
+        m_samplerLocation == 0xFFFFFFFF ||
+        m_eyeWorldPosLocation == 0xFFFFFFFF ||
+        m_dirLightLocation.Color == 0xFFFFFFFF ||
+        m_dirLightLocation.DiffuseIntensity == 0xFFFFFFFF ||
+        m_dirLightLocation.Direction == 0xFFFFFFFF ||
+        m_matSpecularIntensityLocation == 0xFFFFFFFF ||
+        m_matSpecularPowerLocation == 0xFFFFFFFF ||
+        m_numPointLightsLocation == 0xFFFFFFFF ||
+        m_numSpotLightsLocation == 0xFFFFFFFF) {
         return false;
     }
 
@@ -261,13 +257,13 @@ bool LightingTechnique::Init()
         snprintf(Name, sizeof(Name), "gPointLights[%d].Atten.Exp", i);
         m_pointLightsLocation[i].Atten.Exp = GetUniformLocation(Name);
 
-        if (m_pointLightsLocation[i].Color == INVALID_UNIFORM_LOCATION ||
-            m_pointLightsLocation[i].AmbientIntensity == INVALID_UNIFORM_LOCATION ||
-            m_pointLightsLocation[i].Position == INVALID_UNIFORM_LOCATION ||
-            m_pointLightsLocation[i].DiffuseIntensity == INVALID_UNIFORM_LOCATION ||
-            m_pointLightsLocation[i].Atten.Constant == INVALID_UNIFORM_LOCATION ||
-            m_pointLightsLocation[i].Atten.Linear == INVALID_UNIFORM_LOCATION ||
-            m_pointLightsLocation[i].Atten.Exp == INVALID_UNIFORM_LOCATION) {
+        if (m_pointLightsLocation[i].Color == 0xFFFFFFFF ||
+            m_pointLightsLocation[i].AmbientIntensity == 0xFFFFFFFF ||
+            m_pointLightsLocation[i].Position == 0xFFFFFFFF ||
+            m_pointLightsLocation[i].DiffuseIntensity == 0xFFFFFFFF ||
+            m_pointLightsLocation[i].Atten.Constant == 0xFFFFFFFF ||
+            m_pointLightsLocation[i].Atten.Linear == 0xFFFFFFFF ||
+            m_pointLightsLocation[i].Atten.Exp == 0xFFFFFFFF) {
             return false;
         }
     }
@@ -302,15 +298,15 @@ bool LightingTechnique::Init()
         snprintf(Name, sizeof(Name), "gSpotLights[%d].Base.Atten.Exp", i);
         m_spotLightsLocation[i].Atten.Exp = GetUniformLocation(Name);
 
-        if (m_spotLightsLocation[i].Color == INVALID_UNIFORM_LOCATION ||
-            m_spotLightsLocation[i].AmbientIntensity == INVALID_UNIFORM_LOCATION ||
-            m_spotLightsLocation[i].Position == INVALID_UNIFORM_LOCATION ||
-            m_spotLightsLocation[i].Direction == INVALID_UNIFORM_LOCATION ||
-            m_spotLightsLocation[i].Cutoff == INVALID_UNIFORM_LOCATION ||
-            m_spotLightsLocation[i].DiffuseIntensity == INVALID_UNIFORM_LOCATION ||
-            m_spotLightsLocation[i].Atten.Constant == INVALID_UNIFORM_LOCATION ||
-            m_spotLightsLocation[i].Atten.Linear == INVALID_UNIFORM_LOCATION ||
-            m_spotLightsLocation[i].Atten.Exp == INVALID_UNIFORM_LOCATION) {
+        if (m_spotLightsLocation[i].Color == 0xFFFFFFFF ||
+            m_spotLightsLocation[i].AmbientIntensity == 0xFFFFFFFF ||
+            m_spotLightsLocation[i].Position == 0xFFFFFFFF ||
+            m_spotLightsLocation[i].Direction == 0xFFFFFFFF ||
+            m_spotLightsLocation[i].Cutoff == 0xFFFFFFFF ||
+            m_spotLightsLocation[i].DiffuseIntensity == 0xFFFFFFFF ||
+            m_spotLightsLocation[i].Atten.Constant == 0xFFFFFFFF ||
+            m_spotLightsLocation[i].Atten.Linear == 0xFFFFFFFF ||
+            m_spotLightsLocation[i].Atten.Exp == 0xFFFFFFFF) {
             return false;
         }
     }

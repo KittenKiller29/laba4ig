@@ -54,9 +54,8 @@ bool SkyBox::Init(const string& Directory,
 
     m_pMesh = new Mesh();
 
-    return m_pMesh->LoadMesh("C:/Users/azamat/source/repos/labaig4/sphere.obj");
+    return m_pMesh->LoadMesh("C:/Users/azamat/Desktop/sphere.obj");
 }
-
 
 
 void SkyBox::Render()

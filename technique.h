@@ -4,13 +4,11 @@
 #include <GL/glew.h>
 #include <list>
 
-#define INVALID_UNIFORM_LOCATION 0xFFFFFFFF
-
 class Technique
 {
 public:
     Technique();
-    virtual ~Technique();
+    ~Technique();
     virtual bool Init();
     void Enable();
 
