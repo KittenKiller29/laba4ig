@@ -1,3 +1,4 @@
+#pragma once
 #ifndef SKYBOX_H
 #define	SKYBOX_H
 
@@ -5,6 +6,8 @@
 #include "skybox_technique.h"
 #include "cubemap_texture.h"
 #include "mesh.h"
+
+/*Класс скайбокса включает несколько различных элементов - метод, кубическая текстура и модель сферы или куба.*/
 
 class SkyBox
 {

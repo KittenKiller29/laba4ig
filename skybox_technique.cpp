@@ -4,6 +4,7 @@
 #include "skybox_technique.h"
 #include "util.h"
 
+/*Это вершинный шейдер для скайбокса.*/
 static const char* pVS = "                                                          \n\
 #version 330                                                                        \n\
                                                                                     \n\
@@ -65,8 +66,8 @@ bool SkyboxTechnique::Init()
     m_WVPLocation = GetUniformLocation("gWVP");
     m_textureLocation = GetUniformLocation("gCubemapTexture");
 
-    if (m_WVPLocation == 0xFFFFFFFF ||
-        m_textureLocation == 0xFFFFFFFF) {
+    if (m_WVPLocation == INVALID_UNIFORM_LOCATION ||
+        m_textureLocation == INVALID_UNIFORM_LOCATION) {
         return false;
     }
 
@@ -84,3 +85,4 @@ void SkyboxTechnique::SetTextureUnit(unsigned int TextureUnit)
 {
     glUniform1i(m_textureLocation, TextureUnit);
 }
+

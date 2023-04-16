@@ -1,9 +1,13 @@
+#pragma once
 #ifndef SKYBOX_TECHNIQUE_H
 #define	SKYBOX_TECHNIQUE_H
 
 #include "technique.h"
 #include "math_3d.h"
 
+/*ƒл€ рендера скайбокса будет использоватьс€ его собственный метод.
+  ќн имеет набор свойств, которые мы должны указать через вызовы - матрица WVP дл€ преобразовани€ куба или сферы и текстуру,
+  котора€ будет накладыватьс€.*/
 
 class SkyboxTechnique : public Technique {
 public:

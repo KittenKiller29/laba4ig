@@ -17,6 +17,7 @@ void main()                                                                     
     TexCoordOut = TexCoord;                                                         \n\
 }";
 
+/*Это фрагментный шейдер, который используется для отображения карты теней в рендере*/
 static const char* pFS = "                                                          \n\
 #version 330                                                                        \n\
                                                                                     \n\
@@ -57,8 +58,8 @@ bool ShadowMapTechnique::Init()
     m_WVPLocation = GetUniformLocation("gWVP");
     m_textureLocation = GetUniformLocation("gShadowMap");
 
-    if (m_WVPLocation == 0xFFFFFFFF ||
-        m_textureLocation == 0xFFFFFFFF) {
+    if (m_WVPLocation == INVALID_UNIFORM_LOCATION ||
+        m_textureLocation == INVALID_UNIFORM_LOCATION) {
         return false;
     }
 

@@ -54,9 +54,13 @@ bool SkyBox::Init(const string& Directory,
 
     m_pMesh = new Mesh();
 
-    return m_pMesh->LoadMesh("C:/Users/azamat/Desktop/sphere.obj");
+    return m_pMesh->LoadMesh("C:\\Users\\azamat\\Desktop\\sphere.obj");
 }
 
+/*Эта функция рендерит скайбокс. Мы начинаем с разрешения метода скайбокса.
+  Затем мы встречаемся с новым API OpenGL - glGetIntegerv().
+  Эта функция возвращает значение состояния OpenGL для перечисления, указанного в первом параметре.
+  Второй параметр - это адрес на массив типа int, который получит состояние (в нашем случае достаточно одного значения в массиве).*/
 
 void SkyBox::Render()
 {

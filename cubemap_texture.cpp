@@ -40,6 +40,12 @@ CubemapTexture::~CubemapTexture()
     }
 }
 
+/*Функция, которая загружает текстуру, начинается с генерации объекта текстуры.
+  Этот объект привязывается к специальной метке GL_TEXTURE_CUBE_MAP. После этого мы попадаем в цикл, который содержит перечисление GL,
+  которое представляет стороны кубической текстуры (GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X и т.д).
+  Это перечисление совпадает с вектором строк 'm_fileNames', что упрощает цикл.
+  Файлы изображении загружаются один за другим через ImageMagick и затем указываются в OpenGL через glTexImage2D().*/
+
 bool CubemapTexture::Load()
 {
     glGenTextures(1, &m_textureObj);
@@ -74,7 +80,7 @@ bool CubemapTexture::Load()
     return true;
 }
 
-
+/*Эта функция должна быть вызвана до того, как мы будем использовать текстуру для рисования скайбокса.*/
 void CubemapTexture::Bind(GLenum TextureUnit)
 {
     glActiveTexture(TextureUnit);

@@ -1,4 +1,4 @@
-﻿/*
+/*
 
     Copyright 2011 Etay Meiri
 
@@ -90,13 +90,13 @@ public:
 
         m_pTankMesh = new Mesh();
 
-        if (!m_pTankMesh->LoadMesh("C:\\Users\\azamat\\Desktop\\phoenix_ugv.md2")) {
+        if (!m_pTankMesh->LoadMesh("C:\\inj\\content\\Content\\phoenix_ugv.md2")) {
             return false;
         }
 
         m_pSkyBox = new SkyBox(m_pGameCamera, m_persProjInfo);
 
-        if (!m_pSkyBox->Init("C:\\Users\\azamat\\Desktop\\sp3",
+        if (!m_pSkyBox->Init("C:\\inj\\content\\Content",
             "sp3right.jpg",
             "sp3left.jpg",
             "sp3top.jpg",
